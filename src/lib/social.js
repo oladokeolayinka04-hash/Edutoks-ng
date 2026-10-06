@@ -1,5 +1,5 @@
 import {supabase} from "./supabase";
-export async function getFeed(limit=30){const{data,error}=await supabase.rpc("feed_posts",{p_limit:limit});if(error)throw error;return data||[]}
+export async function getFeed(){const{data,error}=await supabase.from("posts").select("id,user_id,body,created_at,profiles(full_name,username,avatar_url),post_likes(user_id),comments(id,user_id,body,created_at)").order("created_at",{ascending:false}).limit(30);if(error)throw error;return data||[]}
 export async function createPost(body){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{data,error}=await supabase.from("posts").insert({user_id:user.id,body}).select().single();if(error)throw error;return data}
 export async function toggleLike(postId,liked){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const q=supabase.from("post_likes");const r=liked?await q.delete().eq("post_id",postId).eq("user_id",user.id):await q.insert({post_id:postId,user_id:user.id});if(r.error)throw r.error}
 export async function addComment(postId,body){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{error}=await supabase.from("comments").insert({post_id:postId,user_id:user.id,body});if(error)throw error}
