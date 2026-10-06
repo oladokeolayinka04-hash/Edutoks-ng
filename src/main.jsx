@@ -4,7 +4,8 @@ import {BookOpen,Trophy,Users,Calculator,UserCircle,Home,ChevronRight,LogIn,LogO
 import {supabase,supabaseConfigured} from "./lib/supabase";
 import {getExams,getSubjects,getTopics,startCbt,submitCbt} from "./lib/cbt";
 import {getCompetitions,joinCompetition,getLeaderboard} from "./lib/competition";
-import {getAttemptHistory,getPerformance,getAttemptCorrections} from "./lib/performance";\nimport {getFeed,createPost,toggleLike,addComment} from "./lib/social";
+import {getAttemptHistory,getPerformance,getAttemptCorrections} from "./lib/performance";
+import {getFeed,createPost,toggleLike,addComment} from "./lib/social";
 import "./styles.css";
 
 const fallbackExams=["JAMB","WAEC","NECO","NABTEB","GCE","BECE","IJMB","Post-UTME"];
