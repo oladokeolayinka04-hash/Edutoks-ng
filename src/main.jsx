@@ -15,10 +15,15 @@ const difficulties=["EASY","MEDIUM","HARD"];
 function App(){
  const [tab,setTab]=useState("home"),[exam,setExam]=useState(null),[subject,setSubject]=useState(null),[topic,setTopic]=useState(""),[difficulty,setDifficulty]=useState(""),[count,setCount]=useState(10);
  const [exams,setExams]=useState([]),[subjects,setSubjects]=useState([]),[topics,setTopics]=useState([]),[session,setSession]=useState(null),[email,setEmail]=useState(""),[password,setPassword]=useState(""),[busy,setBusy]=useState(false),[notice,setNotice]=useState("");
- const [quiz,setQuiz]=useState(null),[index,setIndex]=useState(0),[answers,setAnswers]=useState({}),[result,setResult]=useState(null);\n const [competitions,setCompetitions]=useState([]),[leaders,setLeaders]=useState([]);\n const [history,setHistory]=useState([]),[performance,setPerformance]=useState([]),[corrections,setCorrections]=useState(null),[historyBusy,setHistoryBusy]=useState(false);\n const [feed,setFeed]=useState([]),[postText,setPostText]=useState("");
+ const [quiz,setQuiz]=useState(null),[index,setIndex]=useState(0),[answers,setAnswers]=useState({}),[result,setResult]=useState(null);
+ const [competitions,setCompetitions]=useState([]),[leaders,setLeaders]=useState([]);
+ const [history,setHistory]=useState([]),[performance,setPerformance]=useState([]),[corrections,setCorrections]=useState(null),[historyBusy,setHistoryBusy]=useState(false);
+ const [feed,setFeed]=useState([]),[postText,setPostText]=useState("");
  useEffect(()=>{if(!supabase)return;supabase.auth.getSession().then(({data})=>setSession(data.session));const{data}=supabase.auth.onAuthStateChange((_e,s)=>setSession(s));return()=>data.subscription.unsubscribe()},[]);
  useEffect(()=>{if(!supabaseConfigured)return;Promise.all([getExams(),getSubjects()]).then(([e,s])=>{setExams(e);setSubjects(s);if(e[0])setExam(e[0]);if(s[0])setSubject(s[0])}).catch(()=>{})},[]);
- useEffect(()=>{if(subject?.id)getTopics(subject.id).then(setTopics).catch(()=>setTopics([]))},[subject]);\n useEffect(()=>{if(supabaseConfigured){getCompetitions().then(setCompetitions).catch(()=>{});getLeaderboard(20).then(setLeaders).catch(()=>{})}},[]);\n useEffect(()=>{if(session){getAttemptHistory().then(setHistory).catch(()=>{});getPerformance().then(setPerformance).catch(()=>{})}getFeed().then(setFeed).catch(()=>{})},[session]);
+ useEffect(()=>{if(subject?.id)getTopics(subject.id).then(setTopics).catch(()=>setTopics([]))},[subject]);
+ useEffect(()=>{if(supabaseConfigured){getCompetitions().then(setCompetitions).catch(()=>{});getLeaderboard(20).then(setLeaders).catch(()=>{})}},[]);
+ useEffect(()=>{if(session){getAttemptHistory().then(setHistory).catch(()=>{});getPerformance().then(setPerformance).catch(()=>{})}getFeed().then(setFeed).catch(()=>{})},[session]);
  const signIn=async()=>{setBusy(true);setNotice("");const{error}=await supabase.auth.signInWithPassword({email,password});setNotice(error?error.message:"Signed in successfully.");setBusy(false)};
  const signUp=async()=>{setBusy(true);setNotice("");const{error}=await supabase.auth.signUp({email,password});setNotice(error?error.message:"Account created. Check your email if confirmation is enabled.");setBusy(false)};
  const signOut=async()=>{await supabase?.auth.signOut();setNotice("Signed out.")};
@@ -38,5 +43,6 @@ function App(){
  {notice&&<div className="notice">{notice}</div>}
  </main><nav>{[["home",<Home/>,"Home"],["cbt",<BookOpen/>,"CBT"],["performance",<Target/>,"Results"],["competition",<Trophy/>,"Compete"],["community",<Users/>,"Community"],["tools",<Calculator/>,"Tools"]].map(([id,icon,label])=><button className={tab===id?"nav active":"nav"} onClick={()=>setTab(id)} key={id}>{icon}<span>{label}</span></button>)}</nav></div>
 }
-function CommentBox({postId,refresh}){const [v,setV]=useState("");return <div className="comment-box"><input placeholder="Add a comment…" value={v} onChange={e=>setV(e.target.value)}/><button onClick={async()=>{if(!v.trim())return;await addComment(postId,v.trim());setV("");refresh()}}>Send</button></div>}\nfunction Card({icon,title,text,onClick}){return <button className="card" onClick={onClick}>{icon}<b>{title}</b><span>{text}</span><ChevronRight/></button>}
+function CommentBox({postId,refresh}){const [v,setV]=useState("");return <div className="comment-box"><input placeholder="Add a comment…" value={v} onChange={e=>setV(e.target.value)}/><button onClick={async()=>{if(!v.trim())return;await addComment(postId,v.trim());setV("");refresh()}}>Send</button></div>}
+function Card({icon,title,text,onClick}){return <button className="card" onClick={onClick}>{icon}<b>{title}</b><span>{text}</span><ChevronRight/></button>}
 createRoot(document.getElementById("root")).render(<App/>);
