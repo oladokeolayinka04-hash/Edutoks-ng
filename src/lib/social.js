@@ -1,0 +1,6 @@
+import {supabase} from "./supabase";
+export async function getFeed(limit=30){const{data,error}=await supabase.rpc("feed_posts",{p_limit:limit});if(error)throw error;return data||[]}
+export async function createPost(body){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{data,error}=await supabase.from("posts").insert({user_id:user.id,body}).select().single();if(error)throw error;return data}
+export async function toggleLike(postId,liked){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const q=supabase.from("post_likes");const r=liked?await q.delete().eq("post_id",postId).eq("user_id",user.id):await q.insert({post_id:postId,user_id:user.id});if(r.error)throw r.error}
+export async function addComment(postId,body){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{error}=await supabase.from("comments").insert({post_id:postId,user_id:user.id,body});if(error)throw error}
+export async function toggleFollow(userId,following){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const r=following?await supabase.from("follows").delete().eq("follower_id",user.id).eq("following_id",userId):await supabase.from("follows").insert({follower_id:user.id,following_id:userId});if(r.error)throw r.error}
