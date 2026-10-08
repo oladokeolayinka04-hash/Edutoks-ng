@@ -30,6 +30,7 @@ export async function uploadMedia(file,{resourceType="image",folder="edutoks/pro
   form.append("timestamp",String(signed.timestamp));
   form.append("signature",signed.signature);
   form.append("folder",signed.folder);
+  if(signed.context) form.append("context",signed.context);
   return await new Promise((resolve,reject)=>{
     const xhr=new XMLHttpRequest();
     xhr.open("POST",endpoint);
