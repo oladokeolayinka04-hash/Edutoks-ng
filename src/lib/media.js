@@ -10,7 +10,11 @@ export async function getCloudinaryUploadSignature(resource_type="image",folder=
   const {data,error:fnError}=await supabase.functions.invoke("cloudinary-sign-upload",{
     body:{resource_type,folder}
   });
-  if(fnError) throw fnError;
+  if(fnError){
+    let detail=fnError.message||"UPLOAD_SIGNATURE_FAILED";
+    try{const response=fnError.context;if(response&&typeof response.json==="function"){const payload=await response.clone().json();detail=payload?.error||payload?.message||detail;}}catch{}
+    throw new Error(detail);
+  }
   if(!data?.signature) throw new Error(data?.error||"UPLOAD_SIGNATURE_FAILED");
   return data;
 }
