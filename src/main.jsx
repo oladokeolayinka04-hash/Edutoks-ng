@@ -15,6 +15,7 @@ const fallbackSubjects=["Mathematics","English Language","Physics","Chemistry","
 const difficulties=["EASY","MEDIUM","HARD"];
 
 function App(){
+ const [installPrompt,setInstallPrompt]=useState(null);
  const [tab,setTab]=useState("home"),[exam,setExam]=useState(null),[subject,setSubject]=useState(null),[topic,setTopic]=useState(""),[difficulty,setDifficulty]=useState(""),[count,setCount]=useState(10);
  const [exams,setExams]=useState([]),[subjects,setSubjects]=useState([]),[topics,setTopics]=useState([]),[session,setSession]=useState(null),[email,setEmail]=useState(""),[password,setPassword]=useState(""),[busy,setBusy]=useState(false),[notice,setNotice]=useState("");
  const [quiz,setQuiz]=useState(null),[index,setIndex]=useState(0),[answers,setAnswers]=useState({}),[result,setResult]=useState(null);
