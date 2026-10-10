@@ -1,5 +1,27 @@
 import {supabase} from "./supabase";
-export async function getFeed(){const{data,error}=await supabase.from("posts").select("id,user_id,body,created_at,profiles(full_name,username,avatar_url),post_media(id,media_type,media_url,thumbnail_url,sort_order),post_likes(user_id),comments(id,user_id,body,created_at)").order("created_at",{ascending:false}).limit(30);if(error)throw error;return data||[]}
+const FEED_POST_SELECT="id,user_id,body,created_at,profiles(full_name,username,avatar_url),post_media(id,media_type,media_url,thumbnail_url,sort_order),post_likes(user_id),comments(id,user_id,body,created_at)";
+export async function getFeed(){
+ const{data:posts,error}=await supabase.from("posts").select(FEED_POST_SELECT).order("created_at",{ascending:false}).limit(30);
+ if(error)throw error;
+ let feed=(posts||[]).map(p=>({...p,feed_key:"post-"+p.id,reposted_by:null}));
+ const{data:reposts,error:repostError}=await supabase.from("post_reposts").select("id,user_id,post_id,created_at").order("created_at",{ascending:false}).limit(30);
+ if(repostError)throw repostError;
+ const rows=reposts||[];
+ if(rows.length){
+  const postIds=[...new Set(rows.map(r=>r.post_id))];
+  const userIds=[...new Set(rows.map(r=>r.user_id))];
+  const [{data:repostPosts,error:postsError},{data:profiles,error:profilesError}]=await Promise.all([
+   supabase.from("posts").select(FEED_POST_SELECT).in("id",postIds),
+   supabase.from("profiles").select("id,full_name,username,avatar_url").in("id",userIds)
+  ]);
+  if(postsError)throw postsError;if(profilesError)throw profilesError;
+  const byPost=Object.fromEntries((repostPosts||[]).map(p=>[p.id,p]));
+  const byUser=Object.fromEntries((profiles||[]).map(p=>[p.id,p]));
+  const repostFeed=rows.map(r=>{const p=byPost[r.post_id];return p?({...p,feed_key:"repost-"+r.id,reposted_by:byUser[r.user_id]||null,reposted_at:r.created_at,repost_id:r.id,reposter_id:r.user_id}):null}).filter(Boolean);
+  feed=[...feed,...repostFeed];
+ }
+ return feed.sort((a,b)=>new Date(b.reposted_at||b.created_at)-new Date(a.reposted_at||a.created_at));
+}
 export async function createPost(body){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{data,error}=await supabase.from("posts").insert({user_id:user.id,body}).select().single();if(error)throw error;return data}
 export async function toggleLike(postId,liked){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const q=supabase.from("post_likes");const r=liked?await q.delete().eq("post_id",postId).eq("user_id",user.id):await q.insert({post_id:postId,user_id:user.id});if(r.error)throw r.error}
 export async function addComment(postId,body){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{error}=await supabase.from("comments").insert({post_id:postId,user_id:user.id,body});if(error)throw error}
@@ -23,3 +45,5 @@ export async function getUserSavedPosts(userId){const{data,error}=await supabase
 export async function sendDirectMessage(recipientId,body){const{data,error}=await supabase.rpc("send_direct_message",{p_recipient_id:recipientId,p_body:body});if(error)throw error;return data}
 export async function respondMessageRequest(conversationId,accept){const{data,error}=await supabase.rpc("respond_message_request",{p_conversation_id:conversationId,p_accept:accept});if(error)throw error;return data}
 export async function getMessageRequests(){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{data,error}=await supabase.from("message_requests").select("id,conversation_id,sender_id,recipient_id,status,created_at,first_message_id").eq("recipient_id",user.id).eq("status","pending").order("created_at",{ascending:false});if(error)throw error;const rows=data||[];const ids=[...new Set(rows.map(x=>x.sender_id))];if(!ids.length)return rows.map(x=>({...x,sender:null}));const{data:profiles,error:pe}=await supabase.from("profiles").select("id,username,full_name,avatar_url").in("id",ids);if(pe)throw pe;const byId=Object.fromEntries((profiles||[]).map(p=>[p.id,p]));return rows.map(x=>({...x,sender:byId[x.sender_id]||null}))}
+
+export async function getRepostedPostIds(){const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");const{data,error}=await supabase.from("post_reposts").select("post_id").eq("user_id",user.id);if(error)throw error;return(data||[]).map(x=>x.post_id)}
