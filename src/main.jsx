@@ -1,24 +1,5 @@
-import React,{useEffect,useRef,useState} from "react";
-import {createRoot} from "react-dom/client";
-import {BookOpen,Trophy,Users,Calculator,UserCircle,Home,ChevronRight,LogIn,LogOut,CheckCircle2,ArrowLeft,ArrowRight,Clock,Target,Search,MoreHorizontal,MessageCircle,ArrowLeft as BackIcon,Send,Image as ImageIcon,Star,Mic,Smile,Inbox,Check, X as CloseIcon} from "lucide-react";
-import {supabase,supabaseConfigured} from "./lib/supabase";
-import {getExams,getSubjects,getTopics,startCbt,submitCbt} from "./lib/cbt";
-import {getCompetitions,joinCompetition,getLeaderboard} from "./lib/competition";
-import {getAttemptHistory,getPerformance,getAttemptCorrections} from "./lib/performance";
-import {getFeed,createPost,toggleLike,addComment,searchProfiles,toggleFollow,toggleBlock,getFollowState,toggleSavedPost,getSavedPostIds,repostPost,getPublicProfile,getProfileConnections,getUserPosts,getUserReposts,getUserSavedPosts,getRepostedPostIds,sendDirectMessage,respondMessageRequest,getMessageRequests} from "./lib/social";
-import {uploadMedia,saveProfileAvatar,savePostMedia,saveStoryMedia} from "./lib/media";
-import {getNotifications,getUnreadNotificationCount,markNotificationRead,markAllNotificationsRead} from "./lib/notifications";
-import "./styles.css";
-
-const fallbackExams=["JAMB","WAEC","NECO","NABTEB","GCE","BECE","IJMB","Post-UTME"];
-const fallbackSubjects=["Mathematics","English Language","Physics","Chemistry","Biology","Economics","Government","Accounting"];
-const difficulties=["EASY","MEDIUM","HARD"];
-
-function App(){
- const [installPrompt,setInstallPrompt]=useState(null),[communityFeedTab,setCommunityFeedTab]=useState("For You"),[profileGridTab,setProfileGridTab]=useState("Posts"),[composeOpen,setComposeOpen]=useState(false),[searchOpen,setSearchOpen]=useState(false),[activeCommentPost,setActiveCommentPost]=useState(null);
- const [tab,setTab]=useState("home"),[exam,setExam]=useState(null),[subject,setSubject]=useState(null),[topic,setTopic]=useState(""),[difficulty,setDifficulty]=useState(""),[count,setCount]=useState(10);
- const [exams,setExams]=useState([]),[subjects,setSubjects]=useState([]),[topics,setTopics]=useState([]),[session,setSession]=useState(null),[email,setEmail]=useState(""),[password,setPassword]=useState(""),[busy,setBusy]=useState(false),[notice,setNotice]=useState("");
- const [quiz,setQuiz]=useState(null),[index,setIndex]=useState(0),[answers,setAnswers]=useState({}),[result,setResult]=useState(null),[timeLeft,setTimeLeft]=useState(0);\n const answersRef=useRef({});answersRef.current=answers;
+import React,{
+ const answersRef=useRef({});answersRef.current=answers;
  const [competitions,setCompetitions]=useState([]),[leaders,setLeaders]=useState([]),[competitionLeaders,setCompetitionLeaders]=useState({}),[openCompetitionLeaderboard,setOpenCompetitionLeaderboard]=useState(null),[admin,setAdmin]=useState(false),[adminQuestions,setAdminQuestions]=useState([]),[adminStatus,setAdminStatus]=useState(""),[importText,setImportText]=useState(""),[importFile,setImportFile]=useState(null);
  const [history,setHistory]=useState([]),[performance,setPerformance]=useState([]),[corrections,setCorrections]=useState(null),[historyBusy,setHistoryBusy]=useState(false);
  const [feed,setFeed]=useState([]),[postText,setPostText]=useState(""),[postMediaFile,setPostMediaFile]=useState(null),[uploadProgress,setUploadProgress]=useState(0),[searchText,setSearchText]=useState(""),[searchResults,setSearchResults]=useState([]),[storyFile,setStoryFile]=useState(null),[savedIds,setSavedIds]=useState([]),[repostedIds,setRepostedIds]=useState([]);
