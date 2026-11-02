@@ -113,16 +113,18 @@ function App(){
 }
 
 function SmartStudyPlanner({performance=[],history=[],onStart}){
+ const localDay=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+ const today=localDay();
+ const readStore=(key,fallback)=>{try{const value=localStorage.getItem(key);return value===null?fallback:JSON.parse(value)}catch{return fallback}};
  const [goal,setGoal]=useState(()=>{try{return Number(localStorage.getItem("edutoks-study-goal")||30)}catch{return 30}});
- const [done,setDone]=useState(()=>{try{const saved=JSON.parse(localStorage.getItem("edutoks-study-done")||"{}");return saved[new Date().toISOString().slice(0,10)]||0}catch{return 0}});
- const [checked,setChecked]=useState({});
- const today=new Date().toISOString().slice(0,10);
+ const [done,setDone]=useState(()=>readStore("edutoks-study-done",{})[today]||0);
+ const [checked,setChecked]=useState(()=>readStore("edutoks-study-checklist",{})[today]||{});
  const setDailyGoal=value=>{const next=Math.max(10,Math.min(180,Number(value)||30));setGoal(next);try{localStorage.setItem("edutoks-study-goal",String(next))}catch{}};
- const addMinutes=minutes=>{const next=Math.min(goal,done+minutes);setDone(next);try{const saved=JSON.parse(localStorage.getItem("edutoks-study-done")||"{}");saved[today]=next;localStorage.setItem("edutoks-study-done",JSON.stringify(saved))}catch{}};
+ const addMinutes=minutes=>{const next=Math.min(goal,done+minutes);setDone(next);try{const saved=readStore("edutoks-study-done",{});saved[today]=next;localStorage.setItem("edutoks-study-done",JSON.stringify(saved))}catch{}};
+ const markTask=task=>{if(checked[task.id])return;const next={...checked,[task.id]:true};setChecked(next);try{const saved=readStore("edutoks-study-checklist",{});saved[today]=next;localStorage.setItem("edutoks-study-checklist",JSON.stringify(saved))}catch{};addMinutes(task.minutes)};
  const ranked=[...performance].sort((a,b)=>Number(a.accuracy||0)-Number(b.accuracy||0));
  const weak=ranked.filter(x=>Number(x.attempts||0)>0).slice(0,3);
  const tasks=[{id:"focus",title:"Revise your weakest subject",detail:weak[0]?.subject_name||"Choose a subject from CBT",minutes:15},{id:"practice",title:"Complete a short CBT practice",detail:"10 questions • review every correction",minutes:10},{id:"review",title:"Review your recent corrections",detail:"Understand why each answer is correct",minutes:5}];
- const markTask=task=>{if(checked[task.id])return;setChecked(v=>({...v,[task.id]:true}));addMinutes(task.minutes)};
  const totalAttempts=history.length;
  return <section className="panel study-planner">
   <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap"}}><div><span className="pill">Personal learning dashboard</span><h1>Smart Study Plan</h1><p>Turn your CBT results into a practical daily revision routine.</p></div><button className="secondary" onClick={onStart}>Start CBT practice</button></div>
@@ -140,7 +142,6 @@ function SmartStudyPlanner({performance=[],history=[],onStart}){
   <p style={{fontSize:12,opacity:.7,marginTop:12}}>Daily goal and checklist progress are saved on this device. Subject insights use your existing CBT performance records.</p>
  </section>
 }
-
 function CommentBox({postId,refresh}){const [v,setV]=useState("");return <div className="comment-box"><input placeholder="Add a comment…" value={v} onChange={e=>setV(e.target.value)}/><button onClick={async()=>{if(!v.trim())return;await addComment(postId,v.trim());setV("");refresh()}}>Send</button></div>}
 function Card({icon,title,text,onClick}){return <button className="card" onClick={onClick}>{icon}<b>{title}</b><span>{text}</span><ChevronRight/></button>}
 class AppErrorBoundary extends React.Component{constructor(props){super(props);this.state={hasError:false}}static getDerivedStateFromError(){return{hasError:true}}componentDidCatch(error,info){console.error("EduToks render failure:",error,info)}render(){if(this.state.hasError)return <div style={{minHeight:"100vh",padding:24,display:"grid",placeContent:"center",gap:12,background:"#06100c",color:"#eefdf5",fontFamily:"system-ui,sans-serif"}}><h2>EduToks hit a loading error</h2><p style={{maxWidth:420,color:"#9cb5a8"}}>Your account data has not been deleted. Reload the app to try again.</p><button style={{padding:12,border:0,borderRadius:10,background:"#10b981",fontWeight:700}} onClick={()=>window.location.reload()}>Reload EduToks</button></div>;return this.props.children}}
