@@ -487,3 +487,37 @@ label{color:#b2c8bc;font-size:12px;font-weight:700;letter-spacing:.025em}
  .profile-screen .profile-stats b{font-size:16px}.profile-screen .profile-stats span{font-size:9px}
 }
 @media(max-width:380px){.performance-overview{grid-template-columns:1fr}.performance-metric{display:grid;grid-template-columns:1fr auto;align-items:center}.performance-metric>b{grid-column:2;grid-row:1 / span 2}.history-row>.secondary{font-size:9px;padding:7px}}
+
+
+/* Competitions, rankings and rewards storefront */
+.competition-screen>h1,.rewards-screen>h1{margin:6px 0 8px}
+.competition-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:22px 0 28px;padding:22px 24px;border:1px solid rgba(244,202,112,.2);border-radius:21px;background:radial-gradient(circle at 90% 15%,rgba(243,198,107,.17),transparent 30%),linear-gradient(115deg,rgba(40,61,36,.8),rgba(12,39,34,.95))}
+.competition-banner>div:first-child{display:flex;flex-direction:column;gap:8px}.competition-banner span{font-size:9px;font-weight:850;letter-spacing:.13em;color:#f0ce83}.competition-banner b{font-size:clamp(19px,3vw,26px);letter-spacing:-.04em}.competition-banner small{font-size:12px;color:#b3c8bc}.competition-banner-icon{font-size:54px;filter:drop-shadow(0 8px 18px rgba(243,198,107,.22))}
+.competition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.competition-card{min-width:0;padding:19px;border:1px solid rgba(183,255,220,.12);border-radius:19px;background:linear-gradient(155deg,rgba(18,46,33,.95),rgba(8,23,17,.97));box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.competition-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.competition-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(243,198,107,.2);border-radius:14px;background:rgba(243,198,107,.08);color:#f3c66b}.competition-icon svg{width:21px;height:21px}
+.competition-status{padding:5px 9px;border-radius:999px;border:1px solid rgba(70,220,166,.2);background:rgba(35,200,142,.08);color:#81e9bd;font-size:9px;font-weight:850;letter-spacing:.08em}
+.competition-card h3{margin:15px 0 6px;font-size:18px;letter-spacing:-.035em}.competition-card>p{min-height:38px;margin:0;color:#a6bfb2;font-size:12px;line-height:1.6}.competition-card-meta{margin:14px 0;padding-top:12px;border-top:1px solid rgba(183,255,220,.08);color:#c4d6cc;font-size:10px}
+.competition-card-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}.competition-card-actions button{font-size:11px;padding:10px 8px}
+.competition-leaderboard{margin-top:15px;padding-top:13px;border-top:1px solid rgba(183,255,220,.1)}.competition-leaderboard h4{margin:0 0 9px;font-size:12px}.competition-leaderboard>p{font-size:11px;color:#9bb5a8}
+.points-leaderboard{overflow:hidden;border:1px solid rgba(183,255,220,.12);border-radius:18px;background:rgba(255,255,255,.018)}
+.leaderboard-heading,.rank-row{display:grid;grid-template-columns:58px minmax(0,1fr) 90px;align-items:center;gap:12px;padding:12px 16px}
+.leaderboard-heading{background:rgba(255,255,255,.035);color:#829d8f;font-size:9px;font-weight:850;letter-spacing:.1em}
+.leaderboard-heading span:last-child{text-align:right}
+.rank-row{border-top:1px solid rgba(183,255,220,.07)}.rank-row.rank-top{background:linear-gradient(90deg,rgba(243,198,107,.07),transparent 60%)}
+.rank-number{font-size:13px;font-weight:850;color:#b7cbbf}.rank-student{display:flex;flex-direction:column;gap:3px;min-width:0}.rank-student b,.rank-row>div>b{font-size:12px;overflow-wrap:anywhere}.rank-student small,.rank-row>div>small{font-size:10px;color:#839e90}.rank-row>strong{text-align:right;font-size:13px;color:#82eac1;font-variant-numeric:tabular-nums}
+.rewards-balance{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:22px 0 26px;padding:22px 24px;border:1px solid rgba(72,222,172,.23);border-radius:21px;background:radial-gradient(circle at 88% 12%,rgba(49,210,159,.2),transparent 31%),linear-gradient(110deg,#123d2b,#0c2a27 68%,#102c36)}
+.rewards-balance>div:first-child{display:flex;flex-direction:column;gap:7px}.rewards-balance span{font-size:9px;font-weight:850;letter-spacing:.13em;color:#9ce9c8}.rewards-balance b{font-size:clamp(32px,5vw,44px);letter-spacing:-.055em;font-variant-numeric:tabular-nums}.rewards-balance b small{font-size:14px;color:#b3d6c5;letter-spacing:0}.rewards-balance>div>small{font-size:11px;color:#b1cbbd}.rewards-balance-icon{width:54px;height:54px;display:grid;place-items:center;border:1px solid rgba(243,198,107,.25);border-radius:17px;background:rgba(243,198,107,.1);color:#f3c66b;font-size:30px}
+.rewards-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.reward-card{overflow:hidden;min-width:0;border:1px solid rgba(183,255,220,.12);border-radius:19px;background:linear-gradient(160deg,rgba(18,45,32,.95),rgba(8,22,16,.97))}
+.reward-art{height:125px;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 20%,rgba(243,198,107,.16),transparent 58%),linear-gradient(145deg,rgba(31,72,49,.75),rgba(9,33,31,.8));color:#f3c66b}.reward-art>span{font-size:48px}.reward-art img{width:100%;height:100%;object-fit:cover}
+.reward-card-body{padding:15px}.reward-card-body h3{margin:0 0 6px;font-size:15px;letter-spacing:-.025em}.reward-card-body>p{min-height:34px;margin:0;color:#9db7a9;font-size:11px;line-height:1.5}
+.reward-cost{display:flex;flex-direction:column;gap:4px;margin:14px 0}.reward-cost>b{font-size:19px;color:#8aefc5;font-variant-numeric:tabular-nums}.reward-cost>b small{font-size:10px;color:#b2c9bd}.reward-cost>span{font-size:10px;color:#8fa99a}
+.reward-card-body>.primary{width:100%;font-size:11px;padding:10px 8px}.reward-card-body>.primary:disabled{opacity:.48;cursor:not-allowed;box-shadow:none}
+.redemption-list{display:grid;gap:8px}.redemption-row{display:grid;grid-template-columns:36px minmax(0,1fr) auto auto;align-items:center;gap:11px;padding:13px;border:1px solid rgba(183,255,220,.1);border-radius:15px;background:rgba(255,255,255,.025)}
+.redemption-symbol{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;background:rgba(243,198,107,.1);color:#f3c66b}.redemption-row>div{display:flex;flex-direction:column;gap:3px;min-width:0}.redemption-row>div>b{font-size:12px;overflow-wrap:anywhere}.redemption-row>div>small{font-size:10px;color:#819b8e}.redemption-row>strong{font-size:11px;color:#bfe9d3;white-space:nowrap}
+.redemption-status{padding:5px 8px;border:1px solid rgba(183,255,220,.13);border-radius:999px;color:#b7cbbf;background:rgba(255,255,255,.035);font-size:9px;font-weight:800;text-transform:capitalize;white-space:nowrap}
+.redemption-status.successful,.redemption-status.approved{color:#82eac1;border-color:rgba(70,220,166,.25);background:rgba(35,200,142,.08)}
+.redemption-status.rejected{color:#ff9cae;border-color:rgba(240,91,154,.24);background:rgba(240,91,154,.08)}
+@media(max-width:760px){.competition-grid{grid-template-columns:1fr}.rewards-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.reward-art{height:110px}.competition-banner{padding:18px}.competition-card-actions{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.rewards-grid{grid-template-columns:1fr}.reward-art{height:145px}.redemption-row{grid-template-columns:32px minmax(0,1fr) auto;gap:8px}.redemption-row>strong{grid-column:2;grid-row:2}.redemption-status{grid-column:3;grid-row:1 / span 2}.leaderboard-heading,.rank-row{grid-template-columns:45px minmax(0,1fr) 70px;padding:11px 12px}.competition-banner-icon{font-size:40px}}
