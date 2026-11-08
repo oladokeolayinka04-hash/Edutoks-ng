@@ -1,0 +1,152 @@
+[
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Classification of Living Things", "topic_id": "e49f1f25-0d88-41d1-8b07-a863b9f7e858",
+    "difficulty": "EASY",
+    "question_text": "Which taxonomic rank comes immediately above the genus in the standard biological classification hierarchy?",
+    "explanation": "The hierarchy proceeds from species to genus, family, order, class, phylum (or division in plants) and kingdom. Family is therefore the rank immediately above genus.",
+    "options": [
+      {"option_key":"A","option_text":"Species","is_correct":false},
+      {"option_key":"B","option_text":"Family","is_correct":true},
+      {"option_key":"C","option_text":"Order","is_correct":false},
+      {"option_key":"D","option_text":"Class","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Nutrition", "topic_id": "e5441f15-df0a-4d6d-ae2f-b87d91cb01de",
+    "difficulty": "EASY",
+    "question_text": "Which enzyme in human saliva begins the chemical digestion of cooked starch?",
+    "explanation": "Salivary amylase acts on starch in the mouth, breaking it into smaller carbohydrates, including maltose and dextrins. Pepsin and trypsin digest proteins, while lipase acts on fats.",
+    "options": [
+      {"option_key":"A","option_text":"Pepsin","is_correct":false},
+      {"option_key":"B","option_text":"Salivary amylase","is_correct":true},
+      {"option_key":"C","option_text":"Lipase","is_correct":false},
+      {"option_key":"D","option_text":"Trypsin","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Reproduction", "topic_id": "06c2a6c0-3690-4bd2-b66c-11220c8fb172",
+    "difficulty": "EASY",
+    "question_text": "After fertilisation in a flowering plant, which structure normally develops into the seed?",
+    "explanation": "After fertilisation, the ovule develops into the seed, while the ovary usually develops into the fruit. The fertilised egg cell develops into the embryo inside the seed.",
+    "options": [
+      {"option_key":"A","option_text":"Ovary","is_correct":false},
+      {"option_key":"B","option_text":"Stigma","is_correct":false},
+      {"option_key":"C","option_text":"Ovule","is_correct":true},
+      {"option_key":"D","option_text":"Anther","is_correct":false}
+    ],
+    "correct_answer":"C", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Respiration and Excretion", "topic_id": "04662f78-818d-41c4-9ef5-35774f64db43",
+    "difficulty": "MEDIUM",
+    "question_text": "Which part of a healthy mammalian nephron reabsorbs nearly all filtered glucose and amino acids under normal conditions?",
+    "explanation": "The proximal convoluted tubule selectively reabsorbs essentially all filtered glucose and amino acids under normal conditions, largely through sodium-linked transport. The loop of Henle and collecting duct have other roles in concentrating urine.",
+    "options": [
+      {"option_key":"A","option_text":"Bowman's capsule","is_correct":false},
+      {"option_key":"B","option_text":"Proximal convoluted tubule","is_correct":true},
+      {"option_key":"C","option_text":"Loop of Henle","is_correct":false},
+      {"option_key":"D","option_text":"Collecting duct","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Coordination and Control", "topic_id": "66e06f86-f50c-4911-bd16-6a2f7ed64c94",
+    "difficulty": "MEDIUM",
+    "question_text": "When a person's finger touches a hot object, which sequence correctly traces the impulse in a simple withdrawal reflex?",
+    "explanation": "A receptor detects the heat and stimulates a sensory neurone. The impulse enters the spinal cord, passes through a relay neurone to a motor neurone, and reaches the muscle (effector), which withdraws the finger. The brain becomes aware of the pain shortly afterwards.",
+    "options": [
+      {"option_key":"A","option_text":"Receptor → motor neurone → spinal cord → sensory neurone → muscle","is_correct":false},
+      {"option_key":"B","option_text":"Receptor → sensory neurone → spinal cord relay neurone → motor neurone → muscle","is_correct":true},
+      {"option_key":"C","option_text":"Sensory neurone → receptor → motor neurone → brain → muscle","is_correct":false},
+      {"option_key":"D","option_text":"Receptor → spinal cord → sensory neurone → motor neurone → muscle","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Growth and Development", "topic_id": "a8415831-01cd-4ca6-b445-f9c5131a381a",
+    "difficulty": "MEDIUM",
+    "question_text": "A young shoot is illuminated from one side and bends towards the light. What directly causes greater elongation on the shaded side?",
+    "explanation": "Auxin is redistributed towards the shaded side of a shoot. In shoots, this higher auxin concentration stimulates greater cell elongation there, so the shaded side grows faster and the shoot bends towards the light.",
+    "options": [
+      {"option_key":"A","option_text":"Auxin is destroyed on the shaded side","is_correct":false},
+      {"option_key":"B","option_text":"Auxin accumulates on the shaded side and stimulates greater cell elongation","is_correct":true},
+      {"option_key":"C","option_text":"Gibberellin accumulates on the illuminated side and stops growth","is_correct":false},
+      {"option_key":"D","option_text":"Water enters only the illuminated side","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Nutrition", "topic_id": "e5441f15-df0a-4d6d-ae2f-b87d91cb01de",
+    "difficulty": "MEDIUM",
+    "question_text": "A patient with an obstructed bile duct may have difficulty digesting dietary fat mainly because less bile reaches the small intestine. Which function is reduced?",
+    "explanation": "Bile salts emulsify large fat globules into smaller droplets, increasing the surface area available to pancreatic lipase. Bile is not itself a digestive enzyme and does not hydrolyse fat chemically.",
+    "options": [
+      {"option_key":"A","option_text":"Hydrolysis of proteins into peptides","is_correct":false},
+      {"option_key":"B","option_text":"Emulsification of fats into small droplets","is_correct":true},
+      {"option_key":"C","option_text":"Conversion of glucose to glycogen","is_correct":false},
+      {"option_key":"D","option_text":"Digestion of starch into maltose","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Genetics and Evolution", "topic_id": "0883e580-7bd0-466b-a0d7-85f1e35e5605",
+    "difficulty": "HARD",
+    "question_text": "A woman with blood-group genotype Iᴬi and a man with genotype Iᴮi have a child. What is the probability that the child will have blood group O?",
+    "explanation": "The mother can produce Iᴬ or i gametes, while the father can produce Iᴮ or i gametes. The four equally likely genotypes are IᴬIᴮ, Iᴬi, Iᴮi and ii. Only ii gives blood group O, so the probability is 1 out of 4 (25%).",
+    "options": [
+      {"option_key":"A","option_text":"1/2","is_correct":false},
+      {"option_key":"B","option_text":"1/4","is_correct":true},
+      {"option_key":"C","option_text":"3/4","is_correct":false},
+      {"option_key":"D","option_text":"0","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Respiration and Excretion", "topic_id": "04662f78-818d-41c4-9ef5-35774f64db43",
+    "difficulty": "HARD",
+    "question_text": "A person produces unusually large volumes of dilute urine because very little antidiuretic hormone (ADH) is released. Which nephron change best explains this?",
+    "explanation": "ADH normally increases the water permeability of the distal nephron and collecting ducts, allowing more water to be reabsorbed into the blood. With too little ADH, less water is reabsorbed, so a larger volume of dilute urine is produced.",
+    "options": [
+      {"option_key":"A","option_text":"Increased water permeability of the collecting ducts","is_correct":false},
+      {"option_key":"B","option_text":"Reduced water reabsorption in the collecting ducts","is_correct":true},
+      {"option_key":"C","option_text":"Increased glucose reabsorption in the proximal tubules","is_correct":false},
+      {"option_key":"D","option_text":"Increased filtration of plasma proteins at the glomerulus","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  },
+  {
+    "exam": "JAMB", "exam_id": "0585dd30-589b-4df8-83f3-b40eadaf2ffb",
+    "subject": "Biology", "subject_id": "6352c2b3-4427-4e26-9e0d-e6a1d883f7a8",
+    "topic": "Reproduction", "topic_id": "06c2a6c0-3690-4bd2-b66c-11220c8fb172",
+    "difficulty": "HARD",
+    "question_text": "In a non-pregnant human menstrual cycle, degeneration of the corpus luteum most directly causes which hormonal change that contributes to menstruation?",
+    "explanation": "The corpus luteum secretes progesterone and some oestrogen after ovulation. If pregnancy does not occur, it degenerates and these hormone levels fall. The endometrium is no longer maintained and is shed during menstruation.",
+    "options": [
+      {"option_key":"A","option_text":"A sustained rise in progesterone","is_correct":false},
+      {"option_key":"B","option_text":"A fall in progesterone and oestrogen","is_correct":true},
+      {"option_key":"C","option_text":"A rise in human chorionic gonadotropin (hCG)","is_correct":false},
+      {"option_key":"D","option_text":"Complete cessation of follicle-stimulating hormone (FSH) secretion","is_correct":false}
+    ],
+    "correct_answer":"B", "status":"DRAFT", "source_label":"ChatGPT-assisted draft", "is_ai_generated":true
+  }
+]
