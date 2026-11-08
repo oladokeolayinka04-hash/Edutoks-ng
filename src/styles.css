@@ -822,3 +822,32 @@ main>.panel{border-color:rgba(183,255,220,.11);background:linear-gradient(155deg
 .dashboard-week-days em{position:absolute;top:-9px;color:#7fe2b4;font-size:7px;font-style:normal}
 @media(max-width:700px){.dashboard-activity-strip{grid-template-columns:1fr;gap:9px;margin:11px 0 19px}.dashboard-streak-card,.dashboard-week-card{padding:14px;border-radius:15px}.dashboard-week-days{gap:5px}}
 @media(prefers-reduced-motion:reduce){.dashboard-week-days i{transition:none}}
+
+/* Subject goals and weekly study history */
+.planner-subject-goal{margin:20px 0 24px;padding:19px;border:1px solid rgba(117,228,177,.17);border-radius:18px;background:radial-gradient(ellipse at 95% 0%,rgba(34,180,127,.12),transparent 38%),linear-gradient(145deg,rgba(15,43,28,.84),rgba(7,21,14,.94))}
+.planner-subject-goal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.planner-subject-goal-head h2{margin:5px 0;font-size:19px;letter-spacing:-.035em}
+.planner-subject-goal-head p{max-width:520px;margin:0;color:#9bb5a7;font-size:11px;line-height:1.55}
+.planner-subject-icon{width:42px;height:42px;display:grid;place-items:center;flex:0 0 42px;border:1px solid rgba(115,224,179,.16);border-radius:14px;background:rgba(43,188,137,.08);font-size:21px}
+.planner-subject-goal>label{display:block;margin:16px 0 6px;color:#9bb5a7;font-size:10px;font-weight:750}
+.planner-subject-goal>select{width:100%;min-height:44px;padding:9px 12px;border:1px solid rgba(175,237,204,.15);border-radius:11px;background:#0a2015;color:#effff5;font-size:12px}
+.planner-subject-goal-controls{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:center;margin:16px 0 12px}
+.planner-subject-goal-controls>div:first-child>b{display:block;color:#eafff1;font-size:25px;letter-spacing:-.04em}
+.planner-subject-goal-controls>div:first-child>b small{color:#9eb9aa;font-size:12px;letter-spacing:0}
+.planner-subject-goal-controls>div:first-child>span{display:block;margin-top:3px;color:#8fa99a;font-size:9px}
+.planner-subject-slider>b{display:block;margin-bottom:6px;color:#9fe9c4;font-size:10px;text-align:right}
+.planner-subject-slider input{width:100%;accent-color:#2ad79e}
+.planner-subject-goal>.planner-progress{margin:12px 0}
+.planner-log-block{width:100%;min-height:42px;justify-content:center;font-size:11px}
+.planner-log-block:disabled{opacity:.55;cursor:default}
+.planner-subject-empty{margin-top:14px;padding:13px;border:1px dashed rgba(183,255,220,.14);border-radius:12px;color:#9bb5a7;font-size:11px;line-height:1.55}
+.planner-history{margin:23px 0 25px;padding:16px;border:1px solid rgba(183,255,220,.11);border-radius:17px;background:rgba(255,255,255,.018)}
+.planner-history-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:15px}
+.planner-history-grid>div{display:flex;min-width:0;flex-direction:column;align-items:center;gap:5px}
+.planner-history-bar{height:68px;width:100%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px}
+.planner-history-bar i{display:block;width:min(22px,70%);min-height:3px;border-radius:8px 8px 3px 3px;background:rgba(160,197,175,.16)}
+.planner-history-grid .has-study .planner-history-bar i{background:linear-gradient(180deg,#5ce2ae,#23986d);box-shadow:0 0 12px rgba(54,204,145,.14)}
+.planner-history-grid>div>b{color:#dff8e9;font-size:10px;font-variant-numeric:tabular-nums}
+.planner-history-grid>div>span{color:#91ab9c;font-size:9px;font-weight:750}
+.planner-history-grid>div>small{color:#6f8d7d;font-size:8px}
+@media(max-width:620px){.planner-subject-goal{padding:15px;border-radius:15px}.planner-subject-goal-controls{gap:8px}.planner-history{padding:12px}.planner-history-grid{gap:4px}.planner-history-grid>div>span{font-size:8px}.planner-history-grid>div>small{font-size:7px}.planner-task{align-items:flex-start;flex-wrap:wrap}.planner-task-copy{flex-basis:calc(100% - 60px)}.planner-task>button{margin-left:56px}}
