@@ -799,3 +799,26 @@ main>.panel{border-color:rgba(183,255,220,.11);background:linear-gradient(155deg
 .result-review-explanation{display:grid;gap:5px;margin:11px 0 0;padding:12px;border-left:2px solid #48c993;border-radius:0 10px 10px 0;background:rgba(43,190,132,.055);color:#bfd6c8;font-size:11px;line-height:1.65}
 .result-review-explanation b{color:#92eac0;font-size:10px}
 @media(max-width:520px){.result-review-item{padding:13px}.result-review-answer{display:grid;gap:4px}.result-review-answer>span{flex:auto}.result-review-answer>b{text-align:left}.result-review-item h3{font-size:12px}}
+
+/* Student dashboard study streak and weekly CBT activity */
+.dashboard-activity-strip{display:grid;grid-template-columns:minmax(220px,.82fr) minmax(0,1.7fr);gap:13px;margin:14px 0 24px}
+.dashboard-streak-card,.dashboard-week-card{min-width:0;padding:17px;border:1px solid rgba(153,236,194,.13);border-radius:18px;background:linear-gradient(145deg,rgba(16,43,28,.9),rgba(7,22,14,.96));box-shadow:0 12px 32px rgba(0,0,0,.12)}
+.dashboard-streak-card{display:flex;align-items:center;gap:14px}
+.dashboard-streak-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border:1px solid rgba(245,171,100,.2);border-radius:15px;background:rgba(240,143,76,.08);font-size:24px}
+.dashboard-streak-card .eyebrow,.dashboard-week-heading .eyebrow{display:block;margin-bottom:6px;color:#8ebba2;font-size:8px;font-weight:800;letter-spacing:.1em}
+.dashboard-streak-card>div:last-child>b{display:block;color:#eafff1;font-size:28px;line-height:1.05;font-weight:850;letter-spacing:-.04em}
+.dashboard-streak-card>div:last-child>b small{font-size:12px;color:#a6c7b4;letter-spacing:0}
+.dashboard-streak-card p{margin:6px 0 0;color:#8da99a;font-size:10px;line-height:1.4}
+.dashboard-week-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.dashboard-week-heading>div>b{display:block;color:#effff5;font-size:19px;letter-spacing:-.03em}
+.dashboard-week-heading>div>b small{color:#9ab7a7;font-size:10px;font-weight:500;letter-spacing:0}
+.dashboard-week-heading>span{color:#8da99a;font-size:9px}
+.dashboard-week-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;align-items:end;margin-top:14px}
+.dashboard-week-days>div{position:relative;display:flex;min-width:0;flex-direction:column;align-items:center;justify-content:flex-end;gap:6px;min-height:54px}
+.dashboard-week-days i{display:block;width:min(100%,20px);min-height:5px;border-radius:99px;background:rgba(171,205,185,.13);transition:height .2s ease,background .2s ease}
+.dashboard-week-days .active i{background:linear-gradient(180deg,#58e2ae,#20996d);box-shadow:0 0 14px rgba(62,208,151,.16)}
+.dashboard-week-days span{color:#789587;font-size:9px;font-weight:700}
+.dashboard-week-days .active span{color:#b8e7ce}
+.dashboard-week-days em{position:absolute;top:-9px;color:#7fe2b4;font-size:7px;font-style:normal}
+@media(max-width:700px){.dashboard-activity-strip{grid-template-columns:1fr;gap:9px;margin:11px 0 19px}.dashboard-streak-card,.dashboard-week-card{padding:14px;border-radius:15px}.dashboard-week-days{gap:5px}}
+@media(prefers-reduced-motion:reduce){.dashboard-week-days i{transition:none}}
