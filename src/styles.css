@@ -663,3 +663,31 @@ label{color:#b2c8bc;font-size:12px;font-weight:700;letter-spacing:.025em}
 .messenger-start-composer>p{color:#9db6a7!important}
 .messenger-page button:focus-visible,.messenger-page input:focus-visible{outline:2px solid #79e5b8!important;outline-offset:2px}
 @media(max-width:560px){.messenger-page{border-radius:16px!important;margin:0!important;min-height:calc(100dvh - 145px)!important}.messenger-chat-screen{height:calc(100dvh - 300px)!important}.social-feed-screen .tiktok-feed-brand{top:9px;left:10px}}
+
+/* App shell and primary navigation refinement */
+.app{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
+header{height:76px;padding-inline:clamp(14px,3vw,28px);border-bottom:1px solid rgba(169,242,204,.09);background:rgba(5,19,12,.88);box-shadow:0 8px 28px rgba(0,0,0,.12)}
+header .brand{gap:11px;min-width:0}
+header .brand b{font-size:17px;letter-spacing:-.035em}
+header .brand small{display:block;margin-top:2px;font-size:9px;letter-spacing:.035em;color:#9bb7a7}
+header .logo{width:42px;height:42px;border:1px solid rgba(183,255,220,.22);border-radius:14px;box-shadow:0 7px 22px rgba(20,185,129,.16)}
+header .profile{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(183,255,220,.14);border-radius:14px;background:rgba(255,255,255,.035);transition:background .18s,border-color .18s}
+header .profile:hover{background:rgba(46,201,145,.1);border-color:rgba(90,225,171,.3)}
+main{width:100%;padding:clamp(17px,3vw,30px) clamp(13px,2.5vw,22px) 35px}
+main>.panel{border-color:rgba(183,255,220,.11);background:linear-gradient(155deg,rgba(13,34,23,.92),rgba(7,20,14,.96));box-shadow:0 16px 45px rgba(0,0,0,.12)}
+.app-nav{position:fixed;z-index:30;left:50%;bottom:calc(10px + env(safe-area-inset-bottom));transform:translateX(-50%);width:min(1120px,calc(100% - 28px));height:76px;display:flex;align-items:center;justify-content:flex-start;gap:5px;padding:7px 10px;border:1px solid rgba(168,239,205,.16);border-radius:22px;background:rgba(5,20,13,.91);box-shadow:0 14px 48px rgba(0,0,0,.36),inset 0 1px rgba(255,255,255,.035);backdrop-filter:blur(22px) saturate(135%);scrollbar-width:none;scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+.app-nav::-webkit-scrollbar{display:none}
+.app-nav .nav{position:relative;flex:1 0 76px;width:auto;max-width:none;min-width:68px;height:60px;gap:5px;padding:7px 5px;border:1px solid transparent;border-radius:15px;color:#819b8e;font-size:9px;font-weight:700;letter-spacing:.005em;transition:color .18s ease,background .18s ease,border-color .18s ease,transform .18s ease}
+.app-nav .nav svg{width:19px;height:19px;stroke-width:1.9;transition:transform .18s ease}
+.app-nav .nav span{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app-nav .nav.active{color:#9bf0c9;border-color:rgba(93,225,174,.19);background:linear-gradient(180deg,rgba(41,192,137,.16),rgba(41,192,137,.055));box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.app-nav .nav.active:before{content:"";position:absolute;top:-8px;left:50%;width:19px;height:2px;transform:translateX(-50%);border-radius:5px;background:#69e2b1;box-shadow:0 0 12px rgba(105,226,177,.6)}
+.app-nav .nav.active svg{transform:translateY(-1px);color:#8cebc2}
+.app-nav .nav:focus-visible{outline:2px solid #8cebc2;outline-offset:2px}
+.app-nav .nav:active{transform:scale(.96)}
+.parent-brand-footer{padding:12px 14px calc(95px + env(safe-area-inset-bottom));opacity:.78}
+.parent-brand-footer img{max-width:120px;max-height:27px;object-fit:contain}
+@media(min-width:900px){.app-nav{justify-content:center}.app-nav .nav{flex:1 1 0;min-width:0;max-width:105px}}
+@media(max-width:750px){.app{padding-bottom:calc(100px + env(safe-area-inset-bottom))}header{height:66px}.app-nav{width:calc(100% - 16px);bottom:calc(7px + env(safe-area-inset-bottom));height:68px;padding:6px 7px;border-radius:19px;gap:3px}.app-nav .nav{flex:0 0 73px;min-width:73px;height:54px;font-size:8px}.app-nav .nav svg{width:18px;height:18px}main{padding-top:17px}.parent-brand-footer{padding-bottom:calc(90px + env(safe-area-inset-bottom))}}
+@media(max-width:390px){.app-nav .nav{flex-basis:67px;min-width:67px}.app-nav{gap:2px;padding-inline:5px}}
+@media(prefers-reduced-motion:reduce){.app-nav .nav,.app-nav .nav svg,header .profile{transition:none}}
