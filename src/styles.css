@@ -752,3 +752,26 @@ main>.panel{border-color:rgba(183,255,220,.11);background:linear-gradient(155deg
  .cbt-builder .practice>.primary{width:100%;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){.quiz .progress>i,.quiz .option,.quiz .cbt-question-jump{transition:none}}
+
+/* CBT pre-exam confirmation dialog */
+.cbt-preflight-backdrop{position:fixed;inset:0;z-index:120;display:grid;place-items:center;padding:18px;background:rgba(1,9,5,.78);backdrop-filter:blur(13px);animation:cbtPreflightFade .18s ease-out}
+.cbt-preflight{width:min(100%,590px);max-height:min(90dvh,820px);overflow:auto;padding:clamp(19px,4vw,29px);border:1px solid rgba(135,236,190,.23);border-radius:24px;background:radial-gradient(ellipse at 90% 0%,rgba(38,183,131,.16),transparent 38%),linear-gradient(150deg,#10281b,#08170f);color:#effff6;box-shadow:0 28px 90px rgba(0,0,0,.55);animation:cbtPreflightUp .22s ease-out}
+.cbt-preflight-top{display:flex;align-items:center;justify-content:space-between}
+.cbt-preflight-top .eyebrow{color:#8fe9bf;font-size:10px;font-weight:800;letter-spacing:.12em}
+.cbt-preflight-close{width:34px;height:34px;border:1px solid rgba(183,255,220,.13);border-radius:11px;background:rgba(255,255,255,.05);color:#dff5e8;font-size:23px;line-height:1;cursor:pointer}
+.cbt-preflight h2{margin:13px 0 5px;font-size:clamp(25px,5vw,32px);letter-spacing:-.045em}
+.cbt-preflight-intro{margin:0 0 19px;color:#9eb9aa;font-size:12px;line-height:1.6}
+.cbt-preflight-summary{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.cbt-preflight-summary>div{min-width:0;padding:12px;border:1px solid rgba(183,255,220,.1);border-radius:13px;background:rgba(255,255,255,.035)}
+.cbt-preflight-summary span{display:block;margin-bottom:6px;color:#85a594;font-size:8px;font-weight:800;letter-spacing:.09em}
+.cbt-preflight-summary b{display:block;overflow-wrap:anywhere;color:#e9fff1;font-size:12px}
+.cbt-preflight-rules{margin-top:17px;padding:15px;border:1px solid rgba(98,224,170,.15);border-radius:15px;background:rgba(31,167,116,.07)}
+.cbt-preflight-rules>b{color:#9af0c7;font-size:12px}
+.cbt-preflight-rules ul{display:grid;gap:8px;margin:11px 0 0;padding-left:17px;color:#bfd5c8;font-size:11px;line-height:1.55}
+.cbt-preflight-rules li::marker{color:#6edcae}
+.cbt-preflight-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:19px}
+.cbt-preflight-actions button{min-height:45px}
+@keyframes cbtPreflightFade{from{opacity:0}to{opacity:1}}
+@keyframes cbtPreflightUp{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:460px){.cbt-preflight-backdrop{padding:10px}.cbt-preflight{padding:18px;border-radius:19px}.cbt-preflight-summary{gap:7px}.cbt-preflight-summary>div{padding:10px}.cbt-preflight-actions{display:grid;grid-template-columns:1fr 1fr}.cbt-preflight-actions button{padding-inline:9px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.cbt-preflight-backdrop,.cbt-preflight{animation:none}}
