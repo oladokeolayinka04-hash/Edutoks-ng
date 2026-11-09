@@ -39,7 +39,7 @@ BEGIN
       jsonb_build_object(
         'question_id', aa.question_id,
         'selected_option_id', aa.selected_option_id,
-        'is_correct', aa.is_correct,
+        'is_correct', coalesce(aa.is_correct, false),
         'questions', jsonb_build_object(
           'question_text', q.question_text,
           'explanation', q.explanation,
@@ -61,13 +61,13 @@ BEGIN
     '[]'::jsonb
   )
   INTO v_result
-  FROM public.attempt_answers aa
-  JOIN public.exam_attempt_questions aq
-    ON aq.attempt_id = aa.attempt_id
-   AND aq.question_id = aa.question_id
+  FROM public.exam_attempt_questions aq
   JOIN public.questions q
-    ON q.id = aa.question_id
-  WHERE aa.attempt_id = p_attempt_id;
+    ON q.id = aq.question_id
+  LEFT JOIN public.attempt_answers aa
+    ON aa.attempt_id = aq.attempt_id
+   AND aa.question_id = aq.question_id
+  WHERE aq.attempt_id = p_attempt_id;
 
   RETURN v_result;
 END;
