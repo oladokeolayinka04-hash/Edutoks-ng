@@ -8,7 +8,8 @@ export async function getFollowingIds(){
 export async function getFeed(){
  const{data:posts,error}=await supabase.from("posts").select(FEED_POST_SELECT).order("created_at",{ascending:false}).limit(30);
  if(error)throw error;
- let feed=(posts||[]).map(p=>({...p,feed_key:"post-"+p.id,reposted_by:null}));
+ const normalizePost=p=>({...p,post_media:Array.isArray(p.post_media)?p.post_media:[],post_likes:Array.isArray(p.post_likes)?p.post_likes:[],comments:Array.isArray(p.comments)?p.comments:[],feed_key:"post-"+p.id,reposted_by:null});
+ let feed=(posts||[]).map(normalizePost);
  const{data:reposts,error:repostError}=await supabase.from("post_reposts").select("id,user_id,post_id,created_at").order("created_at",{ascending:false}).limit(30);
  if(repostError)throw repostError;
  const rows=reposts||[];
@@ -22,7 +23,7 @@ export async function getFeed(){
   if(postsError)throw postsError;if(profilesError)throw profilesError;
   const byPost=Object.fromEntries((repostPosts||[]).map(p=>[p.id,p]));
   const byUser=Object.fromEntries((profiles||[]).map(p=>[p.id,p]));
-  const repostFeed=rows.map(r=>{const p=byPost[r.post_id];return p?({...p,feed_key:"repost-"+r.id,reposted_by:byUser[r.user_id]||null,reposted_at:r.created_at,repost_id:r.id,reposter_id:r.user_id}):null}).filter(Boolean);
+  const repostFeed=rows.map(r=>{const p=byPost[r.post_id];return p?({...normalizePost(p),feed_key:"repost-"+r.id,reposted_by:byUser[r.user_id]||null,reposted_at:r.created_at,repost_id:r.id,reposter_id:r.user_id}):null}).filter(Boolean);
   feed=[...feed,...repostFeed];
  }
  return feed.sort((a,b)=>new Date(b.reposted_at||b.created_at)-new Date(a.reposted_at||a.created_at));
