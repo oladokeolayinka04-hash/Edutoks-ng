@@ -1,5 +1,10 @@
 import {supabase} from "./supabase";
 const FEED_POST_SELECT="id,user_id,body,created_at,profiles(full_name,username,avatar_url),post_media(id,media_type,media_url,thumbnail_url,sort_order),post_likes(user_id),comments(id,user_id,body,created_at)";
+export async function getFollowingIds(){
+ const{data:{user}}=await supabase.auth.getUser();if(!user)throw new Error("AUTH_REQUIRED");
+ const{data,error}=await supabase.from("follows").select("following_id").eq("follower_id",user.id);
+ if(error)throw error;return(data||[]).map(row=>row.following_id);
+}
 export async function getFeed(){
  const{data:posts,error}=await supabase.from("posts").select(FEED_POST_SELECT).order("created_at",{ascending:false}).limit(30);
  if(error)throw error;
