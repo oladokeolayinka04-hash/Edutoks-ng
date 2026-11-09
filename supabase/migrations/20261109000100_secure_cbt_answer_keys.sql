@@ -37,7 +37,7 @@ BEGIN
   SELECT coalesce(
     jsonb_agg(
       jsonb_build_object(
-        'question_id', aa.question_id,
+        'question_id', aq.question_id,
         'selected_option_id', aa.selected_option_id,
         'is_correct', coalesce(aa.is_correct, false),
         'questions', jsonb_build_object(
