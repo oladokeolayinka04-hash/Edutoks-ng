@@ -4,11 +4,15 @@
 REVOKE SELECT ON TABLE public.question_options FROM PUBLIC, anon, authenticated;
 GRANT SELECT (id, question_id, option_key, option_text)
   ON TABLE public.question_options TO anon, authenticated;
+-- Table-level REVOKE does not remove pre-existing column-level grants.
 REVOKE SELECT (is_correct) ON TABLE public.question_options FROM PUBLIC, anon, authenticated;
 
 -- Answer correctness is internal grading state. No browser client needs direct
 -- access to attempt_answers; corrections are returned by the owner-checked RPC.
 REVOKE SELECT ON TABLE public.attempt_answers FROM PUBLIC, anon, authenticated;
+-- Explicitly remove legacy column-level grants as well.
+REVOKE SELECT (id, attempt_id, question_id, selected_option_id, is_correct)
+  ON TABLE public.attempt_answers FROM PUBLIC, anon, authenticated;
 DROP POLICY IF EXISTS answers_own ON public.attempt_answers;
 
 CREATE OR REPLACE FUNCTION public.get_attempt_corrections(p_attempt_id uuid)
