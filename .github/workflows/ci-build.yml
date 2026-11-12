@@ -23,5 +23,7 @@ jobs:
           node-version: 22
       - name: Install dependencies
         run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Run offline security contract tests
+        run: npm test
       - name: Build production bundle
         run: npm run build
